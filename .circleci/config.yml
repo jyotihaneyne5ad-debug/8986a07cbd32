@@ -1,0 +1,1691 @@
+version: 2.1
+
+jobs:
+  closedInt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Check the filter chips is disabled
+          command: |
+            mkdir -p /tmp/cell-E
+            set +o pipefail 2>/dev/null; seq 1 1001978 1>/tmp/cell-E/rev_91210; echo "done"; true
+            [ "$(stat -c %s /tmp/cell-E/rev_91210)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/rev_91210)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'rev_91210'
+  vela-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/rev_91210; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  out:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: LABEL CUSTOMS FORMS TRUCK 9
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; ls -S -A -r --time-style=long-iso /bin | uniq; true ; } > /tmp/cell-E/07.01.2021
+            [ "$(stat -c %s /tmp/cell-E/07.01.2021)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/07.01.2021)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - '07.01.2021'
+  perseus-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/07.01.2021; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  posT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: JAN 2023 CLEANUP
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; for item in status trip village expense; do printf '%-8s %d\n' "${item}" ${#item}; done; true ; } > /tmp/cell-E/dustyfenmuondelta
+            [ "$(stat -c %s /tmp/cell-E/dustyfenmuondelta)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/dustyfenmuondelta)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'dustyfenmuondelta'
+  sanity:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/dustyfenmuondelta; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  ReactiveStandardScriptEngine:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Culture the control group at 25 degrees
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; env | sort | sed 's/=.*//' | awk '{print toupper(substr($0,1,1)) substr($0,2)}'; true ; } > /tmp/cell-E/561d5bac490a713e36fe
+            [ "$(stat -c %s /tmp/cell-E/561d5bac490a713e36fe)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/561d5bac490a713e36fe)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - '561d5bac490a713e36fe'
+  rust-bench:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/561d5bac490a713e36fe; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  PageBit:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Warmdown
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; ls --no-group --inode /etc/profile.d|awk '{print length, $0}'|sort -n|tail -3; true ; } > /tmp/cell-E/155756_2022
+            [ "$(stat -c %s /tmp/cell-E/155756_2022)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/155756_2022)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - '155756_2022'
+  orion-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/155756_2022; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  needsLock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: For real revoke the interns
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; printf '%s\n' saturday sunday friday >"/tmp/plan_output_keys.md" && cat -n "/tmp/plan_output_keys.md"; true ; } > /tmp/cell-E/debug-67cb39.log
+            [ "$(stat -c %s /tmp/cell-E/debug-67cb39.log)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/debug-67cb39.log)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'debug-67cb39.log'
+  luna-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e24e28f6; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  no460:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Rinse the water bath and seal
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; cat /etc/hosts|grep -H -i local; true ; } > /tmp/cell-E/apilibdb
+            [ "$(stat -c %s /tmp/cell-E/apilibdb)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/apilibdb)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'apilibdb'
+  strated:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/apilibdb; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  Noodle_96268:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Record Visual Diffs
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; echo 'answer emails' | cat -A; true ; } > /tmp/cell-E/devusrui
+            [ "$(stat -c %s /tmp/cell-E/devusrui)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/devusrui)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'devusrui'
+  sm-x:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/devusrui; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  LOAd:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: sweep IMPORTANT
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; sed 's|.*/||' /etc/shells | head -2 | sort | uniq -c; true ; } > /tmp/cell-E/CASE_077869
+            [ "$(stat -c %s /tmp/cell-E/CASE_077869)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/CASE_077869)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'CASE_077869'
+  dotnet8-vet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e24e28f6; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  w1ndow:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Archive
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; find /tmp -maxdepth 2 -exec echo {} + 2>/dev/null | tail -n 8; true ; } > /tmp/cell-E/PARseRHOst
+            [ "$(stat -c %s /tmp/cell-E/PARseRHOst)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/PARseRHOst)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'PARseRHOst'
+  oct26-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/PARseRHOst; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  j_end:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: RECEIVE PACKING SLIPS TWO PER CART
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; fallocate -l 2M "/tmp/tmp-AuditRubyLayout.csv" && ls -lh "/tmp/tmp-AuditRubyLayout.csv"; true ; } > /tmp/cell-E/v0.6.9
+            [ "$(stat -c %s /tmp/cell-E/v0.6.9)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/v0.6.9)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'v0.6.9'
+  q3-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/v0.6.9; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  grace-box:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Taxi to the integration suite
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; test -x /usr/bin/awk && echo "yes" || echo "no"; true ; } > /tmp/cell-E/silver_tenant_kernel_beam
+            [ "$(stat -c %s /tmp/cell-E/silver_tenant_kernel_beam)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/silver_tenant_kernel_beam)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'silver_tenant_kernel_beam'
+  DATA-144:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/silver_tenant_kernel_beam; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  ay51:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Non negotiable polish
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; printf 'id,item,qty,price\n1,grape,20,6.68\n2,kiwi,8,31.39\n3,papaya,4,88.48\n4,pear,16,5.13\n' >"/tmp/access-card.csv" && cut -d, -f2 "/tmp/access-card.csv"; true ; } > /tmp/cell-E/e15cf47cd13504089e3d7cb01f1a
+            [ "$(stat -c %s /tmp/cell-E/e15cf47cd13504089e3d7cb01f1a)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/e15cf47cd13504089e3d7cb01f1a)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'e15cf47cd13504089e3d7cb01f1a'
+  gating:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e15cf47cd13504089e3d7cb01f1a; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  randomsList:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Sign the dependencies if needed
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; tail -8 /etc/group | cut -f3 -d:; true ; } > /tmp/cell-E/UCJR79
+            [ "$(stat -c %s /tmp/cell-E/UCJR79)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/UCJR79)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'UCJR79'
+  Package_Service2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/UCJR79; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  key-47785:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Scatter the product owner
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; echo 'the end' | sed 's/end/cell/'; true ; } > /tmp/cell-E/DSC_66007
+            [ "$(stat -c %s /tmp/cell-E/DSC_66007)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/DSC_66007)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'DSC_66007'
+  spin-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e24e28f6; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  proFixtureEntry:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Enable masking at scale
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; /bin/echo 'let'\''s go!'; true ; } > /tmp/cell-E/8e1c276b7492087f58880d56cec79
+            [ "$(stat -c %s /tmp/cell-E/8e1c276b7492087f58880d56cec79)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/8e1c276b7492087f58880d56cec79)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - '8e1c276b7492087f58880d56cec79'
+  artifacts:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e24e28f6; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  stage_tool:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: LEGACY translation
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; cp -p /etc/hosts "/var/tmp/widget-token.list" && ls -l --time-style=+%F /etc/hosts "/var/tmp/widget-token.list"; true ; } > /tmp/cell-E/c6be0a1d-16d1-677b
+            [ "$(stat -c %s /tmp/cell-E/c6be0a1d-16d1-677b)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/c6be0a1d-16d1-677b)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'c6be0a1d-16d1-677b'
+  ed-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/c6be0a1d-16d1-677b; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  CREATEidx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Then we kick off the rate limiter
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; grep -o local /etc/hosts | tail -n 3; true ; } > /tmp/cell-E/qqi5d
+            [ "$(stat -c %s /tmp/cell-E/qqi5d)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/qqi5d)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'qqi5d'
+  pr-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e24e28f6; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  opsSlot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: sort by frontend team
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; grep NAME /etc/os-release | head -1 | tr -d '"'; true ; } > /tmp/cell-E/UserReef
+            [ "$(stat -c %s /tmp/cell-E/UserReef)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/UserReef)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'UserReef'
+  Launch_Prod5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/UserReef; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  ID-PCT-TRL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Scan Cold Room
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; touch /tmp/vectortheater.csv && mv -v /tmp/vectortheater.csv "/tmp/middle.copy"; true ; } > /tmp/cell-E/vector_hawk_meadow_polar
+            [ "$(stat -c %s /tmp/cell-E/vector_hawk_meadow_polar)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/vector_hawk_meadow_polar)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'vector_hawk_meadow_polar'
+  Package_Image5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/vector_hawk_meadow_polar; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  dep10y:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Ideate on approval
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; find /dev -maxdepth 3 -type f -name 'tty*' -size -10k -exec sha1sum {} ";" 2>/dev/null | awk -F/ '{print $NF}' | sort | uniq -c | sort -rn | head -5; true ; } > /tmp/cell-E/WalletBeta
+            [ "$(stat -c %s /tmp/cell-E/WalletBeta)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/WalletBeta)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'WalletBeta'
+  run-partial-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e24e28f6; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  asset-mango:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Home stretch batching
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; grep -vs sync /etc/passwd |cut -d: -f1,3; true ; } > /tmp/cell-E/south.URL.4785
+            [ "$(stat -c %s /tmp/cell-E/south.URL.4785)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/south.URL.4785)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'south.URL.4785'
+  ci-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/south.URL.4785; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  initWithRate:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Lima snapshot
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; ls -Q1d --dereference-command-line /tmp | tail -n 10; true ; } > /tmp/cell-E/2ZUwfIpDg9O
+            [ "$(stat -c %s /tmp/cell-E/2ZUwfIpDg9O)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/2ZUwfIpDg9O)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - '2ZUwfIpDg9O'
+  DEV_HOOK_3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/2ZUwfIpDg9O; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  juliett-cursor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: First accrue the cash forecast
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; find /tmp -maxdepth 2 -mindepth 1 -type l -name "*.tmp" -exec ls -ld {} \; 2> /dev/null|nl; true ; } > /tmp/cell-E/glaciergarden
+            [ "$(stat -c %s /tmp/cell-E/glaciergarden)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/glaciergarden)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'glaciergarden'
+  node20-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/glaciergarden; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  t_tap_email:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: DIM textures
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; for conf in /etc/default/*; do ls -l "$conf";done | tac; true ; } > /tmp/cell-E/thetameadow
+            [ "$(stat -c %s /tmp/cell-E/thetameadow)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/thetameadow)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'thetameadow'
+  v5-preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/thetameadow; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  FLG-SQLCODE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Over to Yara
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; printf %s 'north south east west' | sum | awk '{print $1}'; true ; } > /tmp/cell-E/archive371
+            [ "$(stat -c %s /tmp/cell-E/archive371)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/archive371)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'archive371'
+  fix-router-crash:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/archive371; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  failVPNPhone:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: No kidding crop the end card
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; [ -x /bin/sh ] && echo true || echo false; true ; } > /tmp/cell-E/v0.14.30
+            [ "$(stat -c %s /tmp/cell-E/v0.14.30)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/v0.14.30)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'v0.14.30'
+  sm-alt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e24e28f6; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  IDX-SECTION-2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Temper the test tubes
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; for x in magenta black red; do printf '%s\n' $x; done | wc -l; true ; } > /tmp/cell-E/release.1.17
+            [ "$(stat -c %s /tmp/cell-E/release.1.17)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/release.1.17)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'release.1.17'
+  bob-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/release.1.17; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  subscribe_builder_motor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: tear down status page item 036
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; dd if=/dev/zero of="/tmp/dem9.log" bs=1M count=10 status=none && ls -l "/tmp/dem9.log"; true ; } > /tmp/cell-E/e24e28f6
+            [ "$(stat -c %s /tmp/cell-E/e24e28f6)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/e24e28f6)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'e24e28f6'
+  qa-new:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e24e28f6; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+  aki_bot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: failing over mesh routes
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; diff <(echo 'works for me') <(echo 'fair enough') || echo different; true ; } > /tmp/cell-E/release-3660
+            [ "$(stat -c %s /tmp/cell-E/release-3660)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/release-3660)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'release-3660'
+  biuld:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Grab my upstream
+          command: |
+            # iterate check
+            for f in /tmp/cell-E/e24e28f6; do
+              [ -r "$f" ] && echo "$f: $(wc -c < "$f")" || echo "$f: fail"
+            done
+      - run:
+          name: Shallow clone
+          command: git clone --depth 3 --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -I bzip2 -xf weekly-sources.tar.bz2
+      - run:
+          name: Package artifacts
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: nice -n 0 ./diff-04
+
+  ezez:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Low and slow ping
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; find /proc/self -maxdepth 2 -type f -name 'fd' -exec md5sum {} + 2>/dev/null | wc -l; true ; } > /tmp/cell-E/155756_2022
+            [ "$(stat -c %s /tmp/cell-E/155756_2022)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/155756_2022)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - '155756_2022'
+  ms_arg:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Collect the chargebacks fy28
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; find /proc/self -maxdepth 1 -type f -name 'limits' -exec basename {} \;; true ; } > /tmp/cell-E/vector_hawk_meadow_polar
+            [ "$(stat -c %s /tmp/cell-E/vector_hawk_meadow_polar)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/vector_hawk_meadow_polar)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'vector_hawk_meadow_polar'
+  riaksloarkshoost-protocol:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: done garbage collecting watchdog
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; printf 'host=cache-a\nport=1629\nuser=max\ndebug=true\n' >${TMPDIR:-/tmp}/black.csv && grep -c = ${TMPDIR:-/tmp}/black.csv; true ; } > /tmp/cell-E/glaciergarden
+            [ "$(stat -c %s /tmp/cell-E/glaciergarden)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/glaciergarden)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'glaciergarden'
+  cloak792:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Go tag the readme
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; stdbuf -oL echo 'yay!'; true ; } > /tmp/cell-E/south.URL.4785
+            [ "$(stat -c %s /tmp/cell-E/south.URL.4785)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/south.URL.4785)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'south.URL.4785'
+  test_477:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Fast track resume
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 1 -name 'shells' -size 0 -exec basename '{}' \;; true ; } > /tmp/cell-E/dustyfenmuondelta
+            [ "$(stat -c %s /tmp/cell-E/dustyfenmuondelta)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/dustyfenmuondelta)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'dustyfenmuondelta'
+  version3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Restock the outbound orders and strap
+          command: |
+            mkdir -p /tmp/cell-E
+            set +o pipefail 2>/dev/null; seq 1 1001978 1>/tmp/cell-E/rev_91210; echo "done"; true
+            [ "$(stat -c %s /tmp/cell-E/rev_91210)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/rev_91210)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'rev_91210'
+  yoyo-timer-tuple:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Screenshot the submit button twice
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; sum /etc/hosts /etc/hosts; true ; } > /tmp/cell-E/thetameadow
+            [ "$(stat -c %s /tmp/cell-E/thetameadow)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/thetameadow)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'thetameadow'
+  build-handle-motor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Date picker scrolled and verified
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd >/tmp/au.gz && zcat /tmp/au.gz | head -n3; true ; } > /tmp/cell-E/PARseRHOst
+            [ "$(stat -c %s /tmp/cell-E/PARseRHOst)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/PARseRHOst)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'PARseRHOst'
+  b1CDS3Dg3MK:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Focus plus scroll
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; grep -i --only-matching --colour=auto users /etc/group | head -n 2; true ; } > /tmp/cell-E/e15cf47cd13504089e3d7cb01f1a
+            [ "$(stat -c %s /tmp/cell-E/e15cf47cd13504089e3d7cb01f1a)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/e15cf47cd13504089e3d7cb01f1a)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'e15cf47cd13504089e3d7cb01f1a'
+  HOST_REGION_CARD:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Escalate to Dana
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; echo 'hello from the shell' | rev | tr -d '[:digit:]'; true ; } > /tmp/cell-E/v0.6.9
+            [ "$(stat -c %s /tmp/cell-E/v0.6.9)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/v0.6.9)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'v0.6.9'
+  lvsignal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Reopen
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; grep -r --include="*.txt" bash /usr/share/doc/bash 2>/dev/null | nl | head -8; true ; } > /tmp/cell-E/silver_tenant_kernel_beam
+            [ "$(stat -c %s /tmp/cell-E/silver_tenant_kernel_beam)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/silver_tenant_kernel_beam)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'silver_tenant_kernel_beam'
+  Copy-TextId:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cell-E
+      - run:
+          name: Could you dedupe the vector index
+          command: |
+            mkdir -p /tmp/cell-E
+            { set +o pipefail 2>/dev/null; echo 'done!'|base64; true ; } > /tmp/cell-E/UCJR79
+            [ "$(stat -c %s /tmp/cell-E/UCJR79)" -gt 0 ] && echo "stat size $(stat -c %s /tmp/cell-E/UCJR79)"
+      - persist_to_workspace:
+          root: /tmp/cell-E
+          paths:
+            - 'UCJR79'
+workflows:
+  run:
+    jobs:
+      - subscribe_builder_motor
+      - needsLock
+      - CREATEidx
+      - qa-new:
+          requires:
+            - subscribe_builder_motor
+            - needsLock
+            - CREATEidx
+      - luna-push:
+          requires:
+            - subscribe_builder_motor
+            - needsLock
+            - CREATEidx
+      - pr-01:
+          requires:
+            - subscribe_builder_motor
+            - needsLock
+            - CREATEidx
+      - biuld:
+          requires:
+            - subscribe_builder_motor
+            - needsLock
+            - CREATEidx
+      - spin-up:
+          requires:
+            - subscribe_builder_motor
+            - needsLock
+            - CREATEidx
+      - run-partial-test-matrix:
+          requires:
+            - subscribe_builder_motor
+            - needsLock
+            - CREATEidx
+      - sm-alt:
+          requires:
+            - subscribe_builder_motor
+            - needsLock
+            - CREATEidx
+      - dotnet8-vet:
+          requires:
+            - subscribe_builder_motor
+            - needsLock
+            - CREATEidx
+      - artifacts:
+          requires:
+            - subscribe_builder_motor
+            - needsLock
+            - CREATEidx
+      - PageBit
+      - ezez:
+          requires:
+            - PageBit
+      - orion-plus:
+          requires:
+            - ezez
+      - ID-PCT-TRL:
+          requires:
+            - ezez
+      - ms_arg:
+          requires:
+            - ID-PCT-TRL
+      - Package_Image5:
+          requires:
+            - ms_arg
+      - juliett-cursor:
+          requires:
+            - ms_arg
+      - riaksloarkshoost-protocol:
+          requires:
+            - juliett-cursor
+      - node20-test:
+          requires:
+            - riaksloarkshoost-protocol
+      - asset-mango:
+          requires:
+            - riaksloarkshoost-protocol
+      - cloak792:
+          requires:
+            - asset-mango
+      - ci-2a:
+          requires:
+            - cloak792
+      - posT:
+          requires:
+            - cloak792
+      - test_477:
+          requires:
+            - posT
+      - sanity:
+          requires:
+            - test_477
+      - closedInt:
+          requires:
+            - test_477
+      - version3:
+          requires:
+            - closedInt
+      - vela-final:
+          requires:
+            - version3
+      - t_tap_email:
+          requires:
+            - version3
+      - yoyo-timer-tuple:
+          requires:
+            - t_tap_email
+      - v5-preview:
+          requires:
+            - yoyo-timer-tuple
+      - w1ndow:
+          requires:
+            - yoyo-timer-tuple
+      - build-handle-motor:
+          requires:
+            - w1ndow
+      - oct26-ship:
+          requires:
+            - build-handle-motor
+      - ay51:
+          requires:
+            - build-handle-motor
+      - b1CDS3Dg3MK:
+          requires:
+            - ay51
+      - gating:
+          requires:
+            - b1CDS3Dg3MK
+      - j_end:
+          requires:
+            - b1CDS3Dg3MK
+      - HOST_REGION_CARD:
+          requires:
+            - j_end
+      - q3-rev:
+          requires:
+            - HOST_REGION_CARD
+      - grace-box:
+          requires:
+            - HOST_REGION_CARD
+      - lvsignal:
+          requires:
+            - grace-box
+      - DATA-144:
+          requires:
+            - lvsignal
+      - randomsList:
+          requires:
+            - lvsignal
+      - Copy-TextId:
+          requires:
+            - randomsList
+      - Package_Service2:
+          requires:
+            - Copy-TextId
+      - ReactiveStandardScriptEngine
+      - rust-bench:
+          requires:
+            - ReactiveStandardScriptEngine
+      - opsSlot:
+          requires:
+            - ReactiveStandardScriptEngine
+      - Launch_Prod5:
+          requires:
+            - opsSlot
+      - Noodle_96268:
+          requires:
+            - opsSlot
+      - sm-x:
+          requires:
+            - Noodle_96268
+      - stage_tool:
+          requires:
+            - Noodle_96268
+      - ed-smoke:
+          requires:
+            - stage_tool
+      - out:
+          requires:
+            - stage_tool
+      - perseus-beta:
+          requires:
+            - out
+      - IDX-SECTION-2:
+          requires:
+            - out
+      - bob-push:
+          requires:
+            - IDX-SECTION-2
+      - FLG-SQLCODE:
+          requires:
+            - IDX-SECTION-2
+      - fix-router-crash:
+          requires:
+            - FLG-SQLCODE
+      - initWithRate:
+          requires:
+            - FLG-SQLCODE
+      - DEV_HOOK_3:
+          requires:
+            - initWithRate
+      - no460:
+          requires:
+            - initWithRate
+      - strated:
+          requires:
+            - no460
